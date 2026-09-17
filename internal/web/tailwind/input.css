@@ -1,0 +1,173 @@
+@import "tailwindcss";
+@source "../static/";
+
+@theme {
+  --color-primary: #66ccff;
+  --color-primary-strong: #38b6f0;
+  --color-primary-foreground: #10222e;
+}
+
+@layer components {
+  .auth-panel {
+    @apply w-full max-w-sm rounded-lg border border-neutral-200 bg-white p-8 shadow-sm;
+  }
+
+  .board-button {
+    @apply inline-flex min-h-10 items-center justify-center rounded-lg border border-neutral-200 bg-white px-3 text-sm font-medium text-neutral-700 transition hover:border-primary hover:text-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-strong;
+  }
+
+  .primary-button {
+    @apply inline-flex min-h-10 items-center justify-center rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-strong focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .secondary-button {
+    @apply inline-flex min-h-9 items-center justify-center rounded-lg border border-neutral-200 bg-white px-3 text-sm font-medium text-neutral-700 transition hover:border-primary hover:text-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-strong;
+  }
+
+  .danger-button {
+    @apply inline-flex min-h-9 items-center justify-center rounded-lg border border-red-200 bg-white px-3 text-sm font-medium text-red-700 transition hover:border-red-400 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400;
+  }
+
+  .field-input {
+    @apply h-11 w-full rounded-lg border border-neutral-200 bg-white px-3 text-neutral-900 transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40;
+  }
+
+  .mode-button {
+    @apply min-h-10 rounded-lg border border-neutral-200 bg-white px-3 text-sm font-medium text-neutral-600 transition hover:border-primary hover:text-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-strong;
+  }
+
+  .mode-button[aria-selected="true"] {
+    @apply border-primary bg-primary/15 font-semibold text-primary-strong;
+  }
+
+  .composer {
+    @apply relative flex flex-col overflow-hidden;
+    --composer-height: 200px;
+    --composer-min-height: 176px;
+    --composer-max-height: max(176px, calc(100dvh - 112px));
+    height: var(--composer-height);
+    min-height: var(--composer-min-height);
+    max-height: var(--composer-max-height);
+  }
+
+  .composer-resize {
+    @apply absolute inset-x-0 top-0 z-10 flex h-3 cursor-ns-resize touch-none select-none items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-strong;
+  }
+
+  .composer-resize::before {
+    @apply h-1 w-12 rounded-full bg-neutral-300 transition-colors;
+    content: "";
+  }
+
+  .composer-resize:hover::before,
+  .composer-resize:focus-visible::before {
+    @apply bg-primary;
+  }
+
+  .composer-content {
+    @apply flex min-h-0 flex-1 flex-col;
+  }
+
+  .composer-tabs {
+    @apply shrink-0;
+  }
+
+  .composer-form {
+    @apply grid min-h-0 flex-1 gap-3;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  #file-form {
+    gap: calc(var(--spacing) * 2);
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .composer-textarea {
+    @apply min-h-0 w-full resize-none rounded-lg border border-neutral-200 bg-white px-3 py-2 text-neutral-900 transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40;
+  }
+
+  .item-card {
+    @apply w-full rounded-lg border border-neutral-200 bg-white p-4 shadow-sm;
+  }
+
+  .item-title {
+    @apply min-w-0 flex-1 break-words text-base font-semibold text-neutral-900;
+  }
+
+  .item-size {
+    @apply shrink-0 text-xs font-medium text-neutral-500;
+  }
+
+  .item-meta {
+    @apply mt-1 mb-3 text-xs text-neutral-500;
+  }
+
+  .drop-zone {
+    @apply flex min-h-0 cursor-pointer flex-wrap items-center justify-center gap-1 overflow-hidden rounded-lg border border-dashed border-neutral-300 bg-neutral-50 px-4 py-1 text-center text-sm text-neutral-500 transition hover:border-primary hover:text-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-strong;
+  }
+
+  .drop-zone.dragover {
+    @apply border-primary bg-primary/10 text-primary-strong;
+  }
+
+  .selected-files {
+    @apply grid gap-1 text-sm text-neutral-600;
+  }
+
+  .composer-file-body {
+    @apply grid min-h-0 gap-2 overflow-y-auto;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .composer-file-list {
+    @apply min-h-0 overflow-y-auto;
+  }
+
+  .progress {
+    @apply h-1 overflow-hidden rounded-full bg-neutral-200;
+  }
+
+  .progress-bar {
+    @apply h-full w-0 bg-primary transition-[width];
+  }
+
+  .preview-media {
+    @apply block max-h-[70vh] w-auto max-w-full rounded-lg;
+  }
+
+  .preview-frame {
+    @apply h-[70vh] w-full rounded-lg border-0;
+  }
+
+  .preview-text {
+    @apply max-h-[70vh] overflow-auto whitespace-pre-wrap break-words rounded-lg bg-neutral-50 p-3 text-sm text-neutral-800;
+  }
+
+  .modal {
+    @apply max-h-[calc(100dvh-2rem)] w-[min(720px,calc(100vw-2rem))] overflow-y-auto overscroll-contain rounded-lg border border-neutral-200 bg-white p-5 shadow-xl;
+  }
+
+  .modal:modal {
+    margin: auto;
+  }
+
+  .modal-head {
+    @apply mb-4 flex items-center justify-between gap-3;
+  }
+
+  .modal-title {
+    @apply m-0 text-lg font-semibold text-neutral-900;
+  }
+
+  .error {
+    @apply m-0 break-words text-sm text-red-700;
+  }
+
+  .toast {
+    @apply pointer-events-none fixed bottom-20 left-1/2 z-50 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-lg bg-neutral-900 px-4 py-2 text-sm text-white opacity-0 transition-opacity;
+  }
+
+  .toast.visible {
+    @apply opacity-100;
+  }
+}

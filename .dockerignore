@@ -1,0 +1,14 @@
+.playwright-cli/
+.codex/
+.agents/
+openspec/
+docs/
+README.md
+config.example.yaml
+Dockerfile
+.dockerignore
+node_modules/
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+internal/web/tailwind/

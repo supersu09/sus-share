@@ -1,0 +1,13 @@
+{
+  "name": "sus-share-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:css": "tailwindcss -i internal/web/tailwind/input.css -o internal/web/static/style.css --minify"
+  },
+  "packageManager": "pnpm@11.8.0",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

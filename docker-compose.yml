@@ -1,0 +1,21 @@
+services:
+  sus-share:
+    image: sus-share:0.1.0
+    container_name: sus-share
+    restart: unless-stopped
+    ports:
+      - "${SUSSHARE_BIND:-0.0.0.0}:${SUSSHARE_PORT:-19876}:19876"
+    volumes:
+      - "${SUSSHARE_CONFIG_PATH:-./config}:/config"
+      - "${SUSSHARE_DATA_PATH:-./data}:/data"
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:19876/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    stop_grace_period: 10s

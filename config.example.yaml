@@ -1,0 +1,29 @@
+server:
+  host: 0.0.0.0
+  port: 19876
+  # 站点根路径留空；部署在 https://example.com/share/ 时改为 /share。
+  base_path: ""
+  tls:
+    enabled: false
+    cert_file: ""
+    key_file: ""
+
+storage:
+  path: /data
+  ttl: 24h
+
+auth:
+  enabled: true
+  # 留空时默认密码为 password；自定义密码必须写成 Argon2id PHC 哈希。
+  password_hash: ""
+
+limits:
+  max_text_size: 1Mi
+  max_file_size: 100Mi
+  max_storage_size: 4Gi
+
+web:
+  title: SusShare
+
+log:
+  level: info
