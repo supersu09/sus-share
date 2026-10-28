@@ -1,5 +1,11 @@
 @import "tailwindcss";
 @source "../static/";
+/* 掩码字体：所有字符渲染为圆点（来源 text-security，SIL OFL 1.1，许可证见 static/fonts/ 目录） */
+@font-face {
+  font-family: "text-security-disc";
+  src: url("/fonts/text-security-disc.woff2") format("woff2");
+  font-display: block;
+}
 
 @theme {
   --color-primary: #66ccff;
@@ -170,4 +176,10 @@
   .toast.visible {
     @apply opacity-100;
   }
+
+  /* 掩码输入框：真实值存于 input.value，视觉上只显示圆点，浏览器按普通文本框处理 */
+  .masked-input {
+    font-family: "text-security-disc";
+  }
 }
+
